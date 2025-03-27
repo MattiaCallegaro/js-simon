@@ -63,3 +63,19 @@ function hideNumbers() {
     answersFormElement.classList.remove("d-none");
     instructionsElement.textContent = "Inserisci quelli che ricordi!";
 }
+
+//Confronta risposte
+
+function checkAnswer(){
+    const userAnswer = [];
+    for(let i = 0; i < inputElements.length; i++){
+        userAnswer.push(parseInt(inputElements[i].value))
+    }
+}
+
+const correctNumbers = [];
+for(let i =0; i<numeriDaRicordare.length; i++){
+    if(userAnswer.includes(numeriDaRicordare[i])){
+        correctNumbers.push(numeriDaRicordare[i]);
+    }
+}
