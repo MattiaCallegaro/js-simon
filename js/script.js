@@ -66,16 +66,42 @@ function hideNumbers() {
 
 //Confronta risposte
 
-function checkAnswer(){
+function checkAnswer(e) {
+    e.preventDefault();
+
     const userAnswer = [];
-    for(let i = 0; i < inputElements.length; i++){
+    for (let i = 0; i < inputElements.length; i++) {
         userAnswer.push(parseInt(inputElements[i].value))
     }
-}
 
-const correctNumbers = [];
-for(let i =0; i<numeriDaRicordare.length; i++){
-    if(userAnswer.includes(numeriDaRicordare[i])){
-        correctNumbers.push(numeriDaRicordare[i]);
+
+    const correctNumbers = [];
+    for (let i = 0; i < numeriDaRicordare.length; i++) {
+        if (userAnswer.includes(numeriDaRicordare[i])) {
+            correctNumbers.push(numeriDaRicordare[i]);
+        }
     }
+
+
+    const totalNumbers = numeriDaRicordare.length;
+    const numbersCount = correctNumbers.length;
+
+    if (correctNumbers.length === totalNumbers) {
+        messageElement.textContent = "Hai indovinato tutti e 5 i numeri";
+    }
+
+    else if (numbersCount >= 3) {
+        messageElement.textContent = ` Hai indovinato ! ${numbersCount} numeri su ${totalNumbers}`;
+    
+    } else if (numbersCount >= 1) {
+        messageElement.textContent = `Hai indovinato ${numbersCount} numeri su ${totalNumbers}. Riprova sarai più fortunato !`;
+
+    } else {
+        messageElement.textContent = `Peccato! Non hai indovinato nessun numero. I numeri erano: ${numeriDaRicordare.join(', ')}`;
+        
+    }
+
 }
+answersFormElement.addEventListener("submit", function (e) {
+    checkAnswer(e);
+});
