@@ -40,9 +40,9 @@ function displayNumber(numbers) {
     });
 }
 
-numeriDaRicordare = numeriCasuali(); 
-    displayNumber(numeriDaRicordare);
-    startCountdown();
+numeriDaRicordare = numeriCasuali();
+displayNumber(numeriDaRicordare);
+startCountdown();
 //countdown
 function startCountdown() {
     let timeLeft = tempoPerRicordare;
@@ -76,7 +76,6 @@ function checkAnswer(e) {
         userAnswer.push(parseInt(inputElements[i].value))
     }
 
-
     const correctNumbers = [];
     for (let i = 0; i < numeriDaRicordare.length; i++) {
         if (userAnswer.includes(numeriDaRicordare[i])) {
@@ -84,9 +83,10 @@ function checkAnswer(e) {
         }
     }
 
-
     const totalNumbers = numeriDaRicordare.length;
     const numbersCount = correctNumbers.length;
+
+    //visualizza i messaggi
 
     if (correctNumbers.length === totalNumbers) {
         messageElement.textContent = "Hai indovinato tutti e 5 i numeri";
@@ -94,16 +94,17 @@ function checkAnswer(e) {
 
     else if (numbersCount >= 3) {
         messageElement.textContent = ` Hai indovinato ! ${numbersCount} numeri su ${totalNumbers}`;
-    
+
     } else if (numbersCount >= 1) {
         messageElement.textContent = `Hai indovinato ${numbersCount} numeri su ${totalNumbers}. Riprova sarai più fortunato !`;
 
     } else {
         messageElement.textContent = `Peccato! Non hai indovinato nessun numero. I numeri erano: ${numeriDaRicordare.join(', ')}`;
-        
     }
-    
+
 }
+
+//prevenire il refresh
 answersFormElement.addEventListener("submit", function (e) {
     checkAnswer(e);
 });
