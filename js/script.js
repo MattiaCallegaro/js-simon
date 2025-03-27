@@ -11,7 +11,7 @@ const messageElement = document.getElementById("message");
 
 let numeriDaRicordare = [];
 let timer;
-const tempoPerRicordare = 5;
+const tempoPerRicordare = 30;
 
 //genera 5 numeri casuali
 
