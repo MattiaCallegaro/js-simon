@@ -11,7 +11,7 @@ const messageElement = document.getElementById("message");
 
 let numeriDaRicordare= [];
 let timer;
-const tempoPerRicordare= 30;
+const tempoPerRicordare= 10;
 
 //genera 5 numeri casuali
 
@@ -40,3 +40,20 @@ function displayNumber(numbers){
     });
 }
 displayNumber(numeriGenerati);
+
+//countdown
+function startCountdown() {
+    let timeLeft = tempoPerRicordare;
+    countdownElement.textContent = timeLeft;
+    
+    timer = setInterval(() => {
+      timeLeft--;
+      countdownElement.textContent = timeLeft;
+      
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        hideNumbers();
+      }
+    }, 1000);
+  }  
+  startCountdown();
