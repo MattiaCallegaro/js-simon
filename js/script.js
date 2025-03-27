@@ -11,14 +11,14 @@ const messageElement = document.getElementById("message");
 
 let numeriDaRicordare= [];
 let timer;
-const tempoPerRicordare= 10;
+const tempoPerRicordare= 5;
 
 //genera 5 numeri casuali
 
 function numeriCasuali(){
     const numeri = [];
     while(numeri.length<5){
-        const num = Math.floor(Math.random()* 100)+1;
+        const num = Math.floor(Math.random()* 50)+1;
         if(!numeri.includes(num)){
             numeri.push(num);
         } 
@@ -57,3 +57,9 @@ function startCountdown() {
     }, 1000);
   }  
   startCountdown();
+
+  function hideNumbers(){
+    numbersListElement.innerHTML= "";
+    answersFormElement.classList.remove("d-none");
+    instructionsElement.textContent= "Inserisci quelli che ricordi!";
+  }
