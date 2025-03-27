@@ -9,29 +9,29 @@ const messageElement = document.getElementById("message");
 
 //variabili di gioco
 
-let numeriDaRicordare= [];
+let numeriDaRicordare = [];
 let timer;
-const tempoPerRicordare= 5;
+const tempoPerRicordare = 5;
 
 //genera 5 numeri casuali
 
-function numeriCasuali(){
+function numeriCasuali() {
     const numeri = [];
-    while(numeri.length<5){
-        const num = Math.floor(Math.random()* 50)+1;
-        if(!numeri.includes(num)){
+    while (numeri.length < 5) {
+        const num = Math.floor(Math.random() * 50) + 1;
+        if (!numeri.includes(num)) {
             numeri.push(num);
-        } 
+        }
     }
     return numeri;
-   
+
 }
 const numeriGenerati = numeriCasuali();
 console.log("Numeri generati:", numeriGenerati);
 
 //Mostra i numeri da memorizzare
 
-function displayNumber(numbers){
+function displayNumber(numbers) {
     numbersListElement.innerHTML = "";
     numbers.forEach(num => {
         const li = document.createElement("li");
@@ -45,21 +45,21 @@ displayNumber(numeriGenerati);
 function startCountdown() {
     let timeLeft = tempoPerRicordare;
     countdownElement.textContent = timeLeft;
-    
-    timer = setInterval(() => {
-      timeLeft--;
-      countdownElement.textContent = timeLeft;
-      
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        hideNumbers();
-      }
-    }, 1000);
-  }  
-  startCountdown();
 
-  function hideNumbers(){
-    numbersListElement.innerHTML= "";
+    timer = setInterval(() => {
+        timeLeft--;
+        countdownElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            hideNumbers();
+        }
+    }, 1000);
+}
+startCountdown();
+//nascondere i numeri e mostra form
+function hideNumbers() {
+    numbersListElement.innerHTML = "";
     answersFormElement.classList.remove("d-none");
-    instructionsElement.textContent= "Inserisci quelli che ricordi!";
-  }
+    instructionsElement.textContent = "Inserisci quelli che ricordi!";
+}
