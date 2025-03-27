@@ -26,8 +26,8 @@ function numeriCasuali() {
     return numeri;
 
 }
-const numeriGenerati = numeriCasuali();
-console.log("Numeri generati:", numeriGenerati);
+
+console.log("Numeri generati:", numeriDaRicordare);
 
 //Mostra i numeri da memorizzare
 
@@ -39,8 +39,10 @@ function displayNumber(numbers) {
         numbersListElement.appendChild(li);
     });
 }
-displayNumber(numeriGenerati);
 
+numeriDaRicordare = numeriCasuali(); 
+    displayNumber(numeriDaRicordare);
+    startCountdown();
 //countdown
 function startCountdown() {
     let timeLeft = tempoPerRicordare;
@@ -56,7 +58,7 @@ function startCountdown() {
         }
     }, 1000);
 }
-startCountdown();
+
 //nascondere i numeri e mostra form
 function hideNumbers() {
     numbersListElement.innerHTML = "";
@@ -100,7 +102,7 @@ function checkAnswer(e) {
         messageElement.textContent = `Peccato! Non hai indovinato nessun numero. I numeri erano: ${numeriDaRicordare.join(', ')}`;
         
     }
-
+    
 }
 answersFormElement.addEventListener("submit", function (e) {
     checkAnswer(e);
